@@ -250,7 +250,7 @@ Just run the project, and when navigating to the "Riders", the app will sign you
 
 Either from Visual Studio, or from the command line (dotnet run, and open a browser at `https://localhost:5001`)
 - See the swagger for your web API
-- To exercise your API, you'll need an access token. You learnt in Day 1 how to get one. You can also exercise it with your Blazor app
+- To exercise your API, you'll need an access token. You learned in Day 1 how to get one. You can also exercise it with your Blazor app
 
 ### Add more endpoints
 
