@@ -1,57 +1,13 @@
-# Project Name
+# Lab instructions
 
-(short, 1-3 sentenced, description of the project)
+This repository contains the interactive lab and demo instructions used at various workshops both internally and externally for the Microsoft authentication libraries (MSALs) and Microsoft identity platform.
 
-## Features
+## Find your specific workshop
 
-This project framework provides the following features:
-
-* Feature 1
-* Feature 2
-* ...
+Each workshop will have it's own .md file. Just look for your workshop by name or date.
 
 ## Getting Started
 
 ### Prerequisites
 
-(ideally very short, if any)
-
-- OS
-- Library version
-- ...
-
-### Installation
-
-(ideally very short)
-
-- npm install [package name]
-- mvn install
-- ...
-
-### Quickstart
-(Add steps to get up and running quickly)
-
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
-
-
-## Demo
-
-A demo app is included to show how to use the project.
-
-To run the demo, follow these steps:
-
-(Add steps to start up the demo)
-
-1.
-2.
-3.
-
-## Resources
-
-(Any additional resources or related projects)
-
-- Link to supporting information
-- Link to similar sample
-- ...
+Most of the interactive labs and demos require Visual Studio 2019 and/or Visual Studio Code. Some also require Node. Please check the list of prerequisites for each lab.

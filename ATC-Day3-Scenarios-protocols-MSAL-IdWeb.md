@@ -1,30 +1,30 @@
-# Azure AD | Azure AD B2C + MSAL - Sept 2020 - Advanced Training Center | Day 3
+# Azure AD | OAuth2.0/OIDC deep dive with MSAL SDKs, Web Apps, and Web APIs - Sept 2020 - Advanced Training Center | Day 3
 
 ## Prerequisites
 
-Install [Node](https://nodejs.org/en/download/)
+Install [Node](https://nodejs.org/en/download/).
+
 Have your favorite text editor open and ready. We'll be using Visual Studio 2019.
 
 Ideally, install Visual Studio 2019, checking **ASP.NET and web development**, and **.NET Core cross-platform development**.
 
-We'll be walking through the following pre-configured B2C + MSAL demos, if you want to `git clone` and have them ready:
+We'll be walking through the following pre-configured MSAL samples, if you want to `git clone` and have them ready:
+
 [MSAL JS Single-Page Angular Application](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa)
+
 [MSAL node JS web API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
 
-[MSAL.NET desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)
-
-[ASP.NET Core Web app with B2C](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)
-
-- Incremental tutorial [1-5 B2C](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-5-B2C)
-
 **Optional**
+The samples are pre-configured and will work "out of the box", but if you have time and interest, you can configure your own B2C tenant and use that configuration instead:
 [B2C Test Tenant](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant)
 
-## MSAL JS Angular Single-Page Application
+> The lab titles (ex. Lab 03) match the title slides in the PowerPoint given with this workshop.
+
+## Lab 03: MSAL JS Angular Single-Page Application
 
 A Single-Page Application (SPA) calling a Web API.
 The Web API is the MSAL Node JS Web API.
-We will run both at the same time, in order to see the middleware library (Passport.js) validating the token.
+We will run both at the same time, in order to see the middleware library (Passport.js) validating the token. This will show the content learned early in the OAuth2.0 & OIDC sections.
 
 ### Run the Web API
 
@@ -54,42 +54,89 @@ We will run both at the same time, in order to see the middleware library (Passp
 
 - Open `src/app/app-config.ts`
 - Edit Line 45:
+
     **replace**: `webApi: "https://fabrikamb2chello.azurewebsites.net/hello"`
+
     **with**: `webApi: "http://localhost:5000/hello"`
 - Hit Save
 
 - Run the Web app.
+
     `npm start`
 
     `Listening on port 6420...`
 
-You can visit `http://localhost:6420` and perform the following actions:
+Visit `http://localhost:6420` and perform the following actions:
 
 1) Click the Login button to start the Azure AD B2C sign in or sign up workflow.
 1) Once signed in, you can click the Call Web API button to have your display name returned from the Web API call as a JSON object.
-1) Click Logout to logout from the application.
+1) Click "Logout" to logout from the application.
 
-## MSAL .NET Desktop
+## Lab 05: Create your own web app
 
-- `git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git`
+## Lab 06: Create a blazor server web app calling your API
 
-- Open the `active-directory-b2c-wpf.sln` and run the project.
+### Goal
 
-## ASP .NET Core Web App with B2C
+Create a .NET Core 3.1 (or 5.0) Blazor server (Web app) that will exercise your web API.
 
-`git clone https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2.git`
+### Build the Blazor server Web App
 
-Navigate to the "1-5-B2C" folder
+1. In a developer command prompt, generate a Blazor Web app calling Microsoft Graph:
 
- `cd "1-5-B2C"`
+   ```Shell
+   mkdir YourAliasCarpoolBlazorWebApp
+   cd YourAliasCarpoolBlazorWebApp
+   dotnet new blazorserver2 --auth SingleOrg ^
+     --client-id ClientIdOfTheWebAppYouCreatedInDay1 ^
+     --tenant-id "fb76fa85-e896-4a3b-b915-99764ea778ed" ^
+     --domain "M365x670600.OnMicrosoft.com" ^
+     --called-api-url "https://localhost:44383" ^
+     --called-api-scopes:  "api://clientIdWebApi/Riders.Read api://api://clientIdWebApi/Drivers.Read api://clientIdWebApi/Rides.Read"
+    ```
 
-1) Build the solution and run it.
-1) Open your web browser and make a request to the app. Accept the IIS Express SSL certificate if needed. Click on **SignUp/In** button.
-1) Click on Sign-In
+2. open the project in your favorite editor or Visual Studio
+3. Add the client secret of your Web app in `appsettings.json`
+4. Rename `CallApi.razor` into `Riders.Razor`
+5. In `Riders.Razor`
+   - Change the first line to be `@page "/drivers"`
+   - Change the call to CallWebApiForUserAsync() to the following:
 
-# Lab
+     ```CSharp
+     response = await downstreamAPI.CallWebApiForUserAsync(
+                    "DownstreamApi",
+                    options =>
+                    {
+                      options.RelativePath = "api/riders";
+                      options.Scopes = "api://b6128bb8-a1e3-4c69-984c-30da32c3ff0d/Riders.Read";
+                    });
+     ```
 
-## Create your own API
+6. In Shared\NavMenu.Razor, changed the CalledApi entry to be Riders:
+
+   ```html
+      <li class="nav-item px-3">
+          <NavLink class="nav-link" href="riders">
+              <span class="oi oi-list-rich" aria-hidden="true"></span>Riders
+          </NavLink>
+      </li>
+   ```
+
+### Exercise your Web App
+
+Just run the project, and when navigating to the "Riders", the app will sign you in, and your'll see the JSon generated by the API.
+
+### More:
+
+- You can add more pages for **Drivers** and **Rides** which will call the corresponding web API endpoints.
+
+- You can change the BaseUrl to point to a deployed Web API. For this you'll need to change the `"BaseUrl"` in the `appsettings.json` to have:
+
+  ```Json
+     "BaseUrl": "https://localhost:44383" // or "https://localhost:5001" 
+  ```
+
+## Lab 07: Create your own API
 
 ### Goal
 
@@ -151,69 +198,8 @@ Either from Visual Studio, or from the command line (dotnet run, and open a brow
 
 You can add more controllers for **Drivers** and **Rides**, based on the specification in the swagger
 
-## Create a blazor server web app calling your API
 
-### Goal
-
-Create a .NET Core 3.1 (or 5.0) Blazor server (Web app) that will exercise your web API.
-
-### Build the Blazor server Web App
-
-1. In a developer command prompt, generate a Blazor Web app calling Microsoft Graph:
-
-   ```Shell
-   mkdir YourAliasCarpoolBlazorWebApp
-   cd YourAliasCarpoolBlazorWebApp
-   dotnet new blazorserver2 --auth SingleOrg ^
-     --client-id ClientIdOfTheWebAppYouCreatedInDay1 ^
-     --tenant-id "fb76fa85-e896-4a3b-b915-99764ea778ed" ^
-     --domain "M365x670600.OnMicrosoft.com" ^
-     --called-api-url "https://localhost:44383" ^
-     --called-api-scopes:  "api://clientIdWebApi/Riders.Read api://api://clientIdWebApi/Drivers.Read api://clientIdWebApi/Rides.Read"
-    ```
-
-2. open the project in your favorite editor or Visual Studio
-3. Add the client secret of your Web app in `appsettings.json`
-4. Rename `CallApi.razor` into `Riders.Razor`
-5. In `Riders.Razor`
-   - Change the first line to be `@page "/drivers"`
-   - Change the call to CallWebApiForUserAsync() to the following:
-
-     ```CSharp
-     response = await downstreamAPI.CallWebApiForUserAsync(
-                    "DownstreamApi",
-                    options =>
-                    {
-                      options.RelativePath = "api/riders";
-                      options.Scopes = "api://b6128bb8-a1e3-4c69-984c-30da32c3ff0d/Riders.Read";
-                    });
-     ```
-
-6. In Shared\NavMenu.Razor, changed the CalledApi entry to be Riders:
-
-   ```html
-      <li class="nav-item px-3">
-          <NavLink class="nav-link" href="riders">
-              <span class="oi oi-list-rich" aria-hidden="true"></span>Riders
-          </NavLink>
-      </li>
-   ```
-
-### Exercise your Web App
-
-Just run the project, and when navigating to the "Riders", the app will sign you in, and your'll see the JSon generated by the API.
-
-### More:
-
-- You can add more pages for **Drivers** and **Rides** which will call the corresponding web API endpoints.
-
-- You can change the BaseUrl to point to a deployed Web API. For this you'll need to change the `"BaseUrl"` in the `appsettings.json` to have:
-
-  ```Json
-     "BaseUrl": "https://localhost:44383" // or "https://localhost:5001" 
-  ```
-  
-## ASP.NET (OWIN) sample
+## Lab 08: ASP.NET (OWIN) sample
 
 ### Go to the samples page
 
