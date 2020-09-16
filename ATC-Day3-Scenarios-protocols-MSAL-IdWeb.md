@@ -14,7 +14,7 @@ Install [Node](https://nodejs.org/en/download/).
 
 Have your favorite text editor open and ready. We'll be using Visual Studio 2019.
 
-Ideally, install Visual Studio 2019, checking **ASP.NET and web development**, and **.NET Core cross-platform development**.
+Ideally, install Visual Studio 2019, checking **ASP.NET and web development**, and **.NET Core cross-platform development**, or otherwise, install [ASP.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 
 We'll be walking through the following pre-configured MSAL samples, if you want to `git clone` and have them ready:
 
