@@ -61,7 +61,7 @@ We will run both at the same time, in order to see the middleware library (Passp
     `npm install && npm update`
 
 - Open `src/app/app-config.ts`
-- Edit Line 45:
+- Edit Line 49:
 
     **replace**: `webApi: "https://fabrikamb2chello.azurewebsites.net/hello"`
 
