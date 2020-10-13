@@ -110,7 +110,6 @@ In a developer command prompt:
                      --client-id "fdb91ff5-5ce6-41f3-bdbd-8267c817015d"
    ```
 
-1. Edit the `webapp.csproj` file to replace `<TargetFrameworks>netcoreapp3.1; net5.0</TargetFrameworks>` by `<TargetFramework>netcoreapp3.1</TargetFramework>` (unless you have installed the .NET 5.0 preview framework)
 1. Edit the `Properties\launchsettings.json` file so that in the IISExpress configuration, you use "sslPort": 44365, as this is one of the ports for which the redirect URIs are registered in the B2C application (5001 one is another one, and it's used by the other ASP.NET Core profile described in launchsettings.json file)
    ```Json
    {
