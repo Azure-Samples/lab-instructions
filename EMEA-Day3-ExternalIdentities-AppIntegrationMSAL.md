@@ -4,11 +4,8 @@
 
 **In this article**
 - [Prerequisites](#prerequisites)
-- [Lab 03: MSAL JS Angular Single-Page Application](#lab-03-msal-js-angular-single-page-application)
-- [Lab 05: Create your own web app](#lab-05-create-your-own-web-app)
-- [Lab 06: Create a blazor server web app calling your API](#lab-06-create-a-blazor-server-web-app-calling-your-api)
-- [Lab 07: Create your own API](#lab-07-create-your-own-api)
-- [Lab 08: ASP.NET (OWIN) sample](#lab-08-aspnet-owin-sample)
+- [Lab 01: MSAL JS Angular Single-Page Application](#lab-01-msal-js-angular-single-page-application)
+- [Lab 02: Create your own web app](#lab-02-create-your-own-web-app)
 
 ## Prerequisites
 
