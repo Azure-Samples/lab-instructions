@@ -100,8 +100,8 @@ We offer MVC, Razor, Blazor server, Balzor web assembly...and coming soon gPRC a
 We also have web API templates available [here](https://github.com/AzureAD/microsoft-identity-web/wiki/web-api-template).
 
 ## Links to documentation
-[Overview of the Microsoft identity platform](https://aka.ms/aaddev)
-[App scenarios and authentication flows](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios)
-[Microsoft identity platform samples](https://docs.microsoft.com/en-us/azure/active-directory/develop/sample-v2-code)
-[MSAL overview](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-overview)
-[Microsoft Identity Web overview](https://docs.microsoft.com/en-us/azure/active-directory/develop/microsoft-identity-web)
+- [Overview of the Microsoft identity platform](https://aka.ms/aaddev)
+- [App scenarios and authentication flows](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios)
+- [Microsoft identity platform samples](https://docs.microsoft.com/en-us/azure/active-directory/develop/sample-v2-code)
+- [MSAL overview](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-overview)
+- [Microsoft Identity Web overview](https://docs.microsoft.com/en-us/azure/active-directory/develop/microsoft-identity-web)
