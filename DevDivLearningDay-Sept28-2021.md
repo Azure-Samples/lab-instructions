@@ -11,7 +11,7 @@ Visual Studio 2019
 3. For **Framework**, select .NET 5
 4. For **Authentication Type**, choose Microsoft identity platform
 5. The connected services window appears, and starts the Microsoft identity platform configuration. Click Finish in the Required components dialogue.
-6. Click Configure on Microsoft identity platform.You'll see the list of tenants where you are a user. Choose one from the list.
+6. If this is the first time you use this experience, click **Configure** on **Microsoft identity platform** in the connected services page. If this is not the first time, the page will open automatically. You'll see the list of tenants where you are a user. Choose one from the list.
 7. Click the Green plus sign to create a new app in the selected tenant. Give it a name, and Click Register. The app will be created in Azure AD.
 8. Click Next. Then Finish.
 
