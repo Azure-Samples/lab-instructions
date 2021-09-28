@@ -60,7 +60,7 @@ Copy the command in swagger (for instance:"https://localhost:44359/WeatherForeca
 
 ### Configure the web app
 
-1. Call the [command line tool](https://github.com/AzureAD/microsoft-identity-web/tree/master/tools/app-provisioning-tool)
+1. Install the [command line tool](https://github.com/AzureAD/microsoft-identity-web/tree/master/tools/app-provisioning-tool)
 
     `dotnet tool install --global msidentity-app-sync`
 
