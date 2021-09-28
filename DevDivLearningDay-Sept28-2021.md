@@ -8,7 +8,7 @@ Visual Studio 2019
 
 1. Select File | New Project
 2. Choose ASP.NET Core Web API
-3. For Framework, select .NET 5
+3. For **Framework**, select .NET 5
 4. For **Authentication Type**, choose Microsoft identity platform
 5. The connected services window appears, and starts the Microsoft identity platform configuration. Click Finish in the Required components dialogue.
 6. Click Configure on Microsoft identity platform.You'll see the list of tenants where you are a user. Choose one from the list.
