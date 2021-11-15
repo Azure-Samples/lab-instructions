@@ -3,7 +3,7 @@
 ## B2C & App Integration with MSAL
 
 ## Pre-requisites
- - [B2C Test Tenant](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant). You can configure your own B2C tenant and use that configuration.
+ - [B2C Test Tenant](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant). You can configure your own B2C tenant and use that configuration, or use our client id and tenant below.
  - We'll be using Visual Studio 2022.
 
 ## Lab 01: Create your own web app
@@ -33,8 +33,8 @@ In a developer command prompt:
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:48464",
-      "sslPort": 44365
+      "applicationUrl": "http://localhost:5000",
+      "sslPort": 5000
     }
    },
    // More here
