@@ -8,18 +8,6 @@
 
 ## Lab 01: Create your own web app
 
-### Install the Microsoft.Identity.Web templates in .NET Core
-
-In this lab, we'll need to use the Microsoft.Identity.Web project templates (which are also available in .NET 5.0 from Preview 7). To install them in your system:
-
-1. Download the [Microsoft.Identity.Web.ProjectTemplates-1.20.0](https://www.nuget.org/api/v2/package/Microsoft.Identity.Web.ProjectTemplates/1.20.0) NuGet package from NuGet.org, and save it locally
-1. In a developer command prompt, type
-   ```dotnetcli
-   dotnet new -i Microsoft.Identity.Web.ProjectTemplates.1.20.0.nupkg 
-   ```
-
-This installs the templates, and displays which project templates are available. (You can also type `dotnet new --help` to see the list)
-
 ### Create a B2C web app that sign-in users
 
 In a developer command prompt:
@@ -32,7 +20,7 @@ In a developer command prompt:
 
 1. Create the B2C web app. Use the clientId, instance and domain for the app you created in the Azure AD B2C portal.
    ```dotnetcli
-   dotnet new webapp2 --auth IndividualB2C ^
+   dotnet new webapp --auth IndividualB2C ^
                      --aad-b2c-instance "https://fabrikamb2c.b2clogin.com" ^
                      --domain "fabrikamb2c.onmicrosoft.com" ^
                      --client-id "fdb91ff5-5ce6-41f3-bdbd-8267c817015d"
@@ -60,4 +48,4 @@ In a developer command prompt:
 
 ### Bonus
 
-1. In ASP.NET Core, web apps have several flavors, MVC, Razor, and Blazor Web server. You have created above a Razor assembly by using the **webapp2** template. You can also try the **mvc2** one.
+1. In ASP.NET Core, web apps have several flavors, MVC, Razor, and Blazor Web server. You have created above a Razor assembly by using the **webapp** template. You can also try the **mvc** one.
