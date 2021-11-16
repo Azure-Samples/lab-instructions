@@ -18,12 +18,12 @@ In a developer command prompt:
    cd webapp
    ```
 
-1. Create the B2C web app. Use the clientId, instance and domain for the app you created in the Azure AD B2C portal.
+1. Create the B2C web app in your tenant. Use the clientId, instance and domain for the app you created in the Azure AD B2C portal.
    ```dotnetcli
    dotnet new webapp --auth IndividualB2C ^
                      --aad-b2c-instance "https://fabrikamb2c.b2clogin.com" ^
                      --domain "fabrikamb2c.onmicrosoft.com" ^
-                     --client-id "fdb91ff5-5ce6-41f3-bdbd-8267c817015d"
+                     --client-id "c7498b97-a168-4eef-8d4c-d45d86c95cc3"
    ```
 
 1. Edit the `Properties\launchsettings.json` file so that in the IISExpress configuration, you use "sslPort": 44365, as this is one of the ports for which the redirect URIs are registered in the B2C application (5001 one is another one, and it's used by the other ASP.NET Core profile described in launchsettings.json file)
@@ -45,6 +45,22 @@ In a developer command prompt:
 
 > That's what it took to create a B2C application that signs-in users.
 > Note that you don't need any client secret until your web app calls a web API.
+
+
+### Event simpler
+
+Alternatively to steps 2 and 3, you can also let the [msidentity-app-sync](https://github.com/AzureAD/microsoft-identity-web/blob/master/tools/app-provisioning-tool/README.md) tool create the application for you in the B2C tenants, based on the code.
+
+   ```dotnetcli
+   mkdir emea2021
+   cd emea2021
+   dotnet tool install --global msidentity-app-sync
+   dotnet new webapp --auth IndividualB2C ^
+                     --aad-b2c-instance "https://fabrikamb2c.b2clogin.com" ^
+                     --domain "fabrikamb2c.onmicrosoft.com"
+   msidentity-app-sync
+   ```
+
 
 ### Bonus
 
