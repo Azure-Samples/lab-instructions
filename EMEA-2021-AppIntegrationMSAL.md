@@ -47,7 +47,7 @@ In a developer command prompt:
 > Note that you don't need any client secret until your web app calls a web API.
 
 
-### Event simpler
+### Even simpler
 
 Alternatively to steps 2 and 3, you can also let the [msidentity-app-sync](https://github.com/AzureAD/microsoft-identity-web/blob/master/tools/app-provisioning-tool/README.md) tool create the application for you in the B2C tenants, based on the code.
 
