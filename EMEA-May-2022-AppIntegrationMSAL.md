@@ -49,15 +49,17 @@ In a developer command prompt:
 
 ### Even simpler
 
-Alternatively to steps 2 and 3, you can also let the [msidentity-app-sync](https://github.com/AzureAD/microsoft-identity-web/blob/master/tools/app-provisioning-tool/README.md) tool create the application for you in the B2C tenants, based on the code.
+Alternatively to steps 2 and 3, you can also let the [msidentity-app-sync](https://github.com/AzureAD/microsoft-identity-web/blob/master/tools/app-provisioning-tool/README.md) tool create the application for you in the B2C tenants, based on the code. It will even call a downstream web API which is deployed in Azure.
 
    ```dotnetcli
    mkdir emea2022
    cd emea2022
    dotnet tool install --global msidentity-app-sync
    dotnet new webapp --auth IndividualB2C ^
-                     --aad-b2c-instance "https://fabrikamb2c.b2clogin.com" ^
-                     --domain "fabrikamb2c.onmicrosoft.com"
+     --aad-b2c-instance "https://fabrikamb2c.b2clogin.com" ^
+     --domain "fabrikamb2c.onmicrosoft.com" ^
+     --called-api-url "https://fabrikamb2chello.azurewebsites.net/hello" ^
+     --called-api-scopes "https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"
    msidentity-app-sync
    ```
 
