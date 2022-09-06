@@ -4,10 +4,10 @@ This repository contains the interactive lab and demo instructions used at vario
 
 ## Find your specific workshop
 
-Each workshop will have it's own .md file. Just look for your workshop by name or date.
+Each workshop will have its own .md file. Just look for your workshop by name or date.
 
 ## Getting Started
 
 ### Prerequisites
 
-Most of the interactive labs and demos require Visual Studio 2019 and/or Visual Studio Code. Some also require Node. Please check the list of prerequisites for each lab.
+Most of the interactive labs and demos require Visual Studio 2022 and/or Visual Studio Code. Some also require Node. Please check the list of prerequisites for each lab.
